@@ -3,7 +3,7 @@ import ToggleThemeButton from "./ToggleThemeButton"
 
 function NavigationBar() {
   return (
-    <nav className="sticky inset-0 flex w-full items-center justify-between bg-(--color-rich-black) text-white px-6 py-4">
+    <nav className="sticky inset-0 flex w-full items-center justify-between bg-(--color-rich-black) px-6 py-4 text-white">
       <div className="flex items-center gap-4">
         <ToggleThemeButton />
         <NavLink to={"/"}>

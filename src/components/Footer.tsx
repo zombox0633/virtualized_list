@@ -1,4 +1,3 @@
-
 function Footer() {
   return (
     <footer className="flex w-full items-center justify-center py-3">

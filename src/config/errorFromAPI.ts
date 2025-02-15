@@ -14,9 +14,8 @@ export const statusMessageErrorApi: Record<number, { message: string }> = {
 export type OnHandleErrorFromAPIReturnType = [null, string]
 
 export const checkErrorMessage = (error: unknown): string => {
-  return error instanceof Error ? error.message : "Unknown error";
-};
-
+  return error instanceof Error ? error.message : "Unknown error"
+}
 
 const DEFAULT_ERROR_MESSAGE =
   "An unexpected error occurred. Please try again later."

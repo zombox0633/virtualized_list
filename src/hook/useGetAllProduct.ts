@@ -12,9 +12,11 @@ function useGetAllProduct() {
   useEffect(() => {
     dispatch(fetchAllProduct())
   }, [dispatch])
-  
-  return{
-    data, loading, error
+
+  return {
+    data,
+    loading,
+    error,
   }
 }
 

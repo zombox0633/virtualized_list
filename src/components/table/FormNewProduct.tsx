@@ -1,7 +1,7 @@
 import { useState } from "react"
 import clsx from "clsx"
 import { v4 as uuidv4 } from "uuid"
-import { ProductDataType} from "../../types/product.type"
+import { ProductDataType } from "../../types/product.type"
 import { handleChangeProductItem, timestampFormat } from "../../helpers/utils"
 import { visibleHeaders } from "../../constraint/mockProducts"
 
@@ -9,9 +9,7 @@ type FormNewProductPropsType = {
   setProducts: React.Dispatch<React.SetStateAction<ProductDataType[]>>
 }
 
-function FormNewProduct({
-  setProducts,
-}: FormNewProductPropsType) {
+function FormNewProduct({ setProducts }: FormNewProductPropsType) {
   const [newProduct, setNewProduct] = useState<ProductDataType>({
     id: "",
     name: "",

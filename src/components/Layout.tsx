@@ -4,7 +4,7 @@ import NavigationBar from "./navbar/NavigationBar"
 
 function Layout() {
   return (
-    <div className="relative z-0 flex h-screen w-full items-center justify-center flex-col">
+    <div className="relative z-0 flex h-screen w-full flex-col items-center justify-center">
       <NavigationBar />
       {/* <Backdrop/> */}
       <main className="w-full max-w-7xl flex-grow p-6">

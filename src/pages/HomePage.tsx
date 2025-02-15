@@ -1,13 +1,11 @@
-import useGetAllProduct from '../hook/useGetAllProduct'
+import useGetAllProduct from "../hook/useGetAllProduct"
 
 function HomePage() {
   // const {data} = useGetAllProduct()
 
   // console.log(data);
-  
-  return (
-    <div>HomePage</div>
-  )
+
+  return <div>HomePage</div>
 }
 
 export default HomePage
