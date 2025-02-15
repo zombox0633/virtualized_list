@@ -1,12 +1,55 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 /* @source "../node_modules/@acmecorp/ui-lib"; */
+
+:root {
+  --color-neon-blue: #615fff;
+  --color-eerie-black: #18181b;
+  --color-rich-black: #030712;
+}
 
 @layer base {
   * {
-    @apply m-0 box-border p-0;
+    @apply m-0 box-border;
   }
 
   body {
-    @apply min-h-screen;
+    @apply min-h-screen bg-white text-black transition-colors dark:bg-(--color-rich-black) dark:text-white;
+  }
+
+  h1 {
+    @apply text-5xl sm:text-7xl lg:text-8xl 2xl:text-9xl;
+  }
+
+  h2 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl lg:text-2xl 2xl:text-3xl;
+  }
+}
+
+@layer components {
+  .button__df {
+    @apply bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700;
+  }
+
+  .button__df_theme {
+    @apply bg-(--color-neon-blue) px-6 py-3 text-center font-bold text-white transition-all hover:bg-(--color-neon-blue) focus:ring-4 focus:ring-blue-300 focus:outline-none dark:border-(--color-eerie-black)/70 dark:bg-(--color-eerie-black) dark:hover:bg-(--color-eerie-black)/70 dark:focus:ring-white/50;
+  }
+
+  .input__df {
+    @apply border border-gray-300 px-2 py-1 placeholder:text-gray-500 dark:bg-gray-700 dark:text-white dark:placeholder:text-white/80;
+  }
+
+  .hide-number-spin {
+    -moz-appearance: textfield;
+  }
+  .hide-number-spin::-webkit-inner-spin-button,
+  .hide-number-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
