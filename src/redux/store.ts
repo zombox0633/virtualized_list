@@ -3,7 +3,7 @@ import getAllProductSlice from "./products/getAllProductSlice"
 
 export const store = configureStore({
   reducer: {
-    getAllProduct: getAllProductSlice.reducer,
+    getAllProduct: getAllProductSlice,
   },
 })
 
