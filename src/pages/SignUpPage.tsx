@@ -1,7 +1,11 @@
-import React from "react"
+import AuthForm from "../components/AuthForm"
 
 function SignUpPage() {
-  return <div>SignUpPage</div>
+  return (
+    <>
+    <AuthForm isLogin={false}/>
+    </>
+  )
 }
 
 export default SignUpPage

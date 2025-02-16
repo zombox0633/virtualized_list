@@ -1,7 +1,11 @@
-import React from "react"
+import AuthForm from "../components/AuthForm"
 
 function SignInPage() {
-  return <div>SignInPage</div>
+  return (
+    <>
+      <AuthForm isLogin={true} />
+    </>
+  )
 }
 
 export default SignInPage
