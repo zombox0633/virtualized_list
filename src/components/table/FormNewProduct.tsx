@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from "uuid"
 import { ProductDataType } from "../../types/product.type"
 import { handleChangeProductItem, timestampFormat } from "../../helpers/utils"
 import { visibleHeaders } from "../../constraint/mockProducts"
+import { useDispatch } from "react-redux"
+import { addProductRedux } from "../../redux/products/getAllProductSlice"
 
-type FormNewProductPropsType = {
-  setProducts: React.Dispatch<React.SetStateAction<ProductDataType[]>>
-}
-
-function FormNewProduct({ setProducts }: FormNewProductPropsType) {
+function FormNewProduct() {
+  const dispatch = useDispatch()
   const [newProduct, setNewProduct] = useState<ProductDataType>({
     id: "",
     name: "",
@@ -25,7 +24,12 @@ function FormNewProduct({ setProducts }: FormNewProductPropsType) {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
 
-    setProducts((prev) => [...prev, { ...newProduct, id: uuidv4() }])
+    const productWithId: ProductDataType = {
+      ...newProduct,
+      id: uuidv4()
+    }
+    dispatch(addProductRedux(productWithId))
+
     setNewProduct({
       id: "",
       name: "",
@@ -45,6 +49,7 @@ function FormNewProduct({ setProducts }: FormNewProductPropsType) {
         .filter((header) => header.state)
         .map((header) => (
           <input
+          key={header.key}
             type={
               header.key === "price" || header.key === "quantity"
                 ? "number"

@@ -5,16 +5,20 @@ type TheadPropsType = {
 }
 function Thead({ visibleHeaders }: TheadPropsType) {
   return (
-    <thead className="border-2 bg-white uppercase dark:bg-(--color-eerie-black) dark:text-white">
-      <tr>
+    <div className="border-b-2 bg-white uppercase dark:bg-(--color-eerie-black) dark:text-white">
+      <div className="grid grid-cols-11 gap-x-2 px-2">
+        <div className="py-3">INDEX</div>
         {visibleHeaders.map((header) => (
-          <th key={header.key} scope="col" className="px-6 py-3">
+          <div
+            key={header.key}
+            className={"px-2 py-3 col-span-2"}
+          >
             {header.key}
-          </th>
+          </div>
         ))}
-        <th className="px-6 py-3 text-center">{"Actions"}</th>
-      </tr>
-    </thead>
+        <th className="col-span-2 px-2 py-3 text-center">{"Actions"}</th>
+      </div>
+    </div>
   )
 }
 
