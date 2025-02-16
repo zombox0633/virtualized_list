@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import ToggleThemeButton from "./ToggleThemeButton"
+import ToggleThemeButton from "../button/ToggleThemeButton"
 
 function NavigationBar() {
   return (
