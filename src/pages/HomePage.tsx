@@ -4,7 +4,7 @@ import useDownloadCSV from "../hook/useDownloadCSV"
 import useGetAllProduct from "../hook/useGetAllProduct"
 
 function HomePage() {
-  const { downloadCSV } = useDownloadCSV()
+  const { downloadCSV_FULL } = useDownloadCSV()
   const { data } = useGetAllProduct()
 
   return (
@@ -14,7 +14,7 @@ function HomePage() {
           <FormNewProduct />
           <button
             type="button"
-            onClick={() => downloadCSV(data)}
+            onClick={downloadCSV_FULL}
             disabled={!data || data.length === 0}
             className="h-12 w-auto bg-[#17c964] px-4 py-2 font-bold text-white hover:bg-[#17c964]/80 disabled:bg-[#17c964]/70"
           >
