@@ -3,21 +3,26 @@ import ToggleThemeButton from "./ToggleThemeButton"
 
 function NavigationBar() {
   return (
-    <nav className="sticky inset-0 flex w-full items-center justify-between bg-(--color-rich-black) px-6 py-4 text-white">
-      <div className="flex items-center gap-4">
-        <ToggleThemeButton />
-        <NavLink to={"/"}>
-          <span className="text-2xl uppercase">home</span>
-        </NavLink>
-      </div>
-      <div className="flex items-center gap-4">
-        <NavLink to={"/sign-up"}>
-          <span className="uppercase">sign up</span>
-        </NavLink>
-        <NavLink to={"/sign-in"}>
-          <span className="uppercase">sign in</span>
-        </NavLink>
-        <button>cart</button>
+    <nav className="sticky inset-0 z-10 w-full">
+      <div className="relative flex w-full items-center justify-between px-6 py-4">
+        <div className=" absolute inset-0 backdrop-blur-2xl -z-10"/>
+        <div className="flex items-center gap-x-8">
+          <ToggleThemeButton />
+          <div className="flex items-end gap-x-4">
+            <NavLink to={"/"}>
+              <span className="text-2xl uppercase">home</span>
+            </NavLink>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <NavLink to={"/sign-up"} className="uppercase">
+            sign up
+          </NavLink>
+          <NavLink to={"/sign-in"} className="uppercase">
+            sign in
+          </NavLink>
+          {/* <button>cart</button> */}
+        </div>
       </div>
     </nav>
   )
