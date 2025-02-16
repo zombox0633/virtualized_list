@@ -4,7 +4,6 @@ import ErrorPage from "./pages/ErrorPage"
 import HomePage from "./pages/HomePage"
 import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
-import AdminPage from "./pages/AdminPage"
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="admin" element={<AdminPage />} caseSensitive />
         </Route>
         <Route path="sign-in" element={<SignInPage />} caseSensitive />
         <Route path="sign-up" element={<SignUpPage />} caseSensitive />
