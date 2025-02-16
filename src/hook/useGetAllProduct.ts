@@ -18,7 +18,7 @@ function useGetAllProduct() {
 
   const loadMoreItems = () => {
     if (data.length < totalItems && !loading) {
-      setPage((prev) => prev + 1)
+      setPage((prev) => (prev + 1 > totalItems / limit ? prev : prev + 1))
     }
   }
 

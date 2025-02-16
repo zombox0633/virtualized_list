@@ -16,7 +16,7 @@ type TableType = {
 function Table({ products }: TableType) {
   const { totalItems, loadMoreItems, loading } = useGetAllProduct()
   const hasMoreItems = products ? products.length < totalItems : false
-
+  
   const isItemLoaded = (index: number) => {
     if (products) {
       return index < products.length

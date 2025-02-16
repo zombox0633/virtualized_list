@@ -63,17 +63,16 @@ const getAllProductSlice = createSlice({
       state.loading = true
       state.error = null
     })
-    builder.addCase(
-      fetchAllProduct.fulfilled,
-      (
-        state,
-        action: PayloadAction<{ data: ProductDataType[]; total: number }>,
-      ) => {
-        state.loading = false
+    builder.addCase(fetchAllProduct.fulfilled, (state, action) => {
+      state.loading = false
+      state.totalItems = action.payload.total
+
+      if (state.data.length === 0 || action.meta.arg.page === 1) {
+        state.data = action.payload.data
+      } else {
         state.data = [...state.data, ...action.payload.data]
-        state.totalItems = action.payload.total
-      },
-    )
+      }
+    })
     builder.addCase(fetchAllProduct.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload as string
