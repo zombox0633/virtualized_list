@@ -1,32 +1,35 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit"
-import getAllProduct from "../../service/product/getAllProduct"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import getAllProduct, {
+  GetAllProductPropsType,
+} from "../../service/product/getAllProduct"
 import { checkErrorMessage } from "../../config/errorFromAPI"
 import { ProductDataType } from "../../types/product.type"
 
 type ProductState = {
   data: ProductDataType[]
+  totalItems: number
   loading: boolean
   error: string | null
 }
 
 const initialState: ProductState = {
   data: [],
+  totalItems: 0,
   loading: false,
   error: null,
 }
 
 export const fetchAllProduct = createAsyncThunk(
   "getAllProductSlice/fetchAllProduct",
-  async (_, { rejectWithValue }) => {
+  async (
+    { page = 1, limit = 20 }: GetAllProductPropsType,
+    { rejectWithValue },
+  ) => {
     try {
-      const [success, error] = await getAllProduct()
+      const [success, error] = await getAllProduct({ page, limit })
 
-      if (success) {
-        return success
+      if (success?.data) {
+        return { data: success.data, total: success.total }
       } else {
         return rejectWithValue(error)
       }
@@ -62,9 +65,13 @@ const getAllProductSlice = createSlice({
     })
     builder.addCase(
       fetchAllProduct.fulfilled,
-      (state, action: PayloadAction<ProductDataType[]>) => {
+      (
+        state,
+        action: PayloadAction<{ data: ProductDataType[]; total: number }>,
+      ) => {
         state.loading = false
-        state.data = action.payload
+        state.data = [...state.data, ...action.payload.data]
+        state.totalItems = action.payload.total
       },
     )
     builder.addCase(fetchAllProduct.rejected, (state, action) => {

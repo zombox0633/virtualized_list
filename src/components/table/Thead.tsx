@@ -16,7 +16,7 @@ function Thead({ visibleHeaders }: TheadPropsType) {
             {header.key}
           </div>
         ))}
-        <th className="col-span-2 px-2 py-3 text-center">{"Actions"}</th>
+        <div className="col-span-2 px-2 py-3 text-center">{"Actions"}</div>
       </div>
     </div>
   )
